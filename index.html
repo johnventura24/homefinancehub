@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HomeFinanceHub – Smarter Financial Guidance for Homeowners</title>
+<meta name="description" content="HomeFinanceHub helps homeowners navigate mortgages, home equity, insurance, taxes, and every financial decision that comes with owning a home.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f2744;
+    --teal: #1a8a7a;
+    --teal-light: #7dd3c8;
+    --gold: #c8922a;
+    --gold-light: #f0c060;
+    --bg: #f7f8fa;
+    --white: #ffffff;
+    --text: #1a2332;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--bg); }
+  h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; }
+
+  /* TOP BAR */
+  .top-bar {
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 8px 20px;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+  .top-bar a { color: var(--teal-light); font-weight: 600; }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); cursor: pointer; }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--muted); transition: color .2s; cursor: pointer; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal);
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background .2s !important;
+  }
+  .nav-cta:hover { background: #156b5d !important; }
+
+  /* PAGE SECTIONS */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a5c 100%);
+    color: white;
+    padding: 90px 40px;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--teal-light);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.15; max-width: 760px; margin: 0 auto 20px; }
+  .hero h1 em { color: var(--teal-light); font-style: normal; }
+  .hero p { font-size: 1.15rem; color: rgba(255,255,255,0.75); max-width: 580px; margin: 0 auto 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--teal);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: background .2s, transform .1s;
+  }
+  .btn-primary:hover { background: #156b5d; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 2px solid rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: border-color .2s, background .2s;
+  }
+  .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; font-weight: 500; color: var(--muted); }
+  .trust-icon { font-size: 1.2rem; }
+
+  /* SECTIONS */
+  .section { padding: 72px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--navy); margin-bottom: 16px; }
+  .section-sub { font-size: 1.05rem; color: var(--muted); max-width: 580px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* CATEGORIES */
+  .categories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+  .category-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    cursor: pointer;
+    transition: box-shadow .2s, transform .2s, border-color .2s;
+    text-align: center;
+  }
+  .category-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.09); transform: translateY(-3px); border-color: var(--teal); }
+  .cat-icon { font-size: 2rem; margin-bottom: 12px; }
+  .cat-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 6px; }
+  .cat-count { font-size: 0.8rem; color: var(--muted); }
+
+  /* HOW IT WORKS */
+  .how-bg { background: linear-gradient(135deg, #f0f7f6 0%, #e8f4f2 100%); }
+  .how-inner { max-width: 1200px; margin: 0 auto; padding: 72px 40px; }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 32px; }
+  .step-card {
+    background: white;
+    border-radius: 12px;
+    padding: 32px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: box-shadow .2s, transform .2s;
+    position: relative;
+  }
+  .step-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); transform: translateY(-3px); }
+  .step-num {
+    width: 40px; height: 40px;
+    background: var(--teal);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1rem;
+    margin-bottom: 16px;
+  }
+  .step-card h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: 10px; }
+  .step-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+  /* ARTICLES GRID */
+  .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; }
+  .article-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .article-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); transform: translateY(-3px); }
+  .article-thumb {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+  }
+  .article-body { padding: 24px; }
+  .article-tag {
+    display: inline-block;
+    background: #e8f4f2;
+    color: var(--teal);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .article-card h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: 8px; line-height: 1.4; }
+  .article-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+  .article-meta { display: flex; align-items: center; gap: 12px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--muted); }
+  .read-more { color: var(--teal); font-weight: 600; margin-left: auto; }
+
+  /* FEATURES GRID */
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 28px; }
+  .feature-card { display: flex; gap: 18px; align-items: flex-start; padding: 28px; background: white; border-radius: 12px; border: 1px solid var(--border); }
+  .feature-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .feature-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 6px; }
+  .feature-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+  /* CALCULATOR */
+  .calc-bg { background: var(--navy); color: white; }
+  .calc-inner { max-width: 800px; margin: 0 auto; padding: 72px 40px; text-align: center; }
+  .calc-inner .section-title { color: white; }
+  .calc-inner .section-sub { color: rgba(255,255,255,0.65); margin-left: auto; margin-right: auto; }
+  .calc-box {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 40px;
+    margin-top: 36px;
+  }
+  .calc-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; margin-bottom: 28px; }
+  .field label { display: block; font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.6); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .field input, .field select {
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    color: white;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .field input::placeholder { color: rgba(255,255,255,0.35); }
+  .field input:focus, .field select:focus { border-color: var(--teal-light); }
+  .field select option { background: var(--navy); }
+  .calc-result {
+    background: rgba(26,138,122,0.2);
+    border: 1px solid rgba(125,211,200,0.3);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 24px;
+    display: none;
+  }
+  .calc-result-num { font-size: 2.4rem; font-family: 'Playfair Display', serif; color: var(--teal-light); }
+  .calc-result p { color: rgba(255,255,255,0.65); font-size: 0.875rem; margin-top: 6px; }
+
+  /* TESTIMONIALS */
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; }
+  .testimonial {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .stars { color: var(--gold); font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
+  .testimonial blockquote { font-size: 0.95rem; color: var(--text); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .reviewer { font-size: 0.875rem; font-weight: 600; color: var(--navy); }
+  .reviewer span { font-weight: 400; color: var(--muted); }
+
+  /* SMS OPT-IN */
+  .optin-bg { background: linear-gradient(135deg, var(--teal) 0%, #0f6b5c 100%); }
+  .optin-inner { max-width: 600px; margin: 0 auto; padding: 80px 40px; text-align: center; color: white; }
+  .optin-inner h2 { font-size: 2rem; margin-bottom: 16px; }
+  .optin-inner p { color: rgba(255,255,255,0.75); margin-bottom: 32px; line-height: 1.7; }
+  .optin-form { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
+  .optin-form input {
+    flex: 1; min-width: 240px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+  }
+  .optin-form button {
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background .2s;
+  }
+  .optin-form button:hover { background: #0a1c33; }
+  .optin-disclaimer { font-size: 0.72rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+  .optin-checkbox-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 16px;
+    text-align: left;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .optin-checkbox-wrap input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.08);
+    cursor: pointer;
+    margin-top: 1px;
+    transition: background .15s, border-color .15s;
+    position: relative;
+  }
+  .optin-checkbox-wrap input[type="checkbox"]:checked {
+    background: var(--teal-light);
+    border-color: var(--teal-light);
+  }
+  .optin-checkbox-wrap input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 3px; top: 0px;
+    width: 5px; height: 9px;
+    border: 2px solid var(--navy);
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+  }
+  .optin-checkbox-wrap label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    cursor: pointer;
+  }
+  .optin-checkbox-wrap label a { color: rgba(255,255,255,0.8); text-decoration: underline; }
+  .optin-btn-disabled { opacity: 0.45; cursor: not-allowed !important; }
+  /* inline optin checkbox */
+  .inline-optin .optin-checkbox-wrap label { color: rgba(255,255,255,0.55); font-size: 0.68rem; }
+
+  /* FOOTER */
+  footer { background: var(--navy); color: rgba(255,255,255,0.55); padding: 64px 40px 32px; }
+  .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: white; margin-bottom: 8px; }
+  .footer-brand-name span { color: var(--teal-light); }
+  .footer-brand-badge {
+    display: inline-block;
+    background: rgba(125,211,200,0.1);
+    border: 1px solid rgba(125,211,200,0.25);
+    color: var(--teal-light);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 280px; }
+  .footer-col h4 { color: white; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { font-size: 0.875rem; color: rgba(255,255,255,0.5); transition: color .2s; cursor: pointer; }
+  .footer-col ul li a:hover { color: var(--teal-light); }
+  .footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 0.8rem; }
+  .footer-bottom a { color: rgba(255,255,255,0.4); transition: color .2s; }
+  .footer-bottom a:hover { color: var(--teal-light); }
+
+  /* ARTICLE PAGE */
+  .article-page { max-width: 800px; margin: 0 auto; padding: 60px 40px; }
+  .article-page-tag { display: inline-block; background: #e8f4f2; color: var(--teal); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 5px 12px; border-radius: 4px; margin-bottom: 16px; }
+  .article-page h1 { font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--navy); margin-bottom: 20px; line-height: 1.2; }
+  .article-page-meta { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; color: var(--muted); padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+  .article-page-content { font-size: 1.05rem; line-height: 1.8; color: #2d3748; }
+  .article-page-content h2 { font-size: 1.5rem; color: var(--navy); margin: 40px 0 16px; }
+  .article-page-content h3 { font-size: 1.2rem; color: var(--navy); margin: 28px 0 12px; }
+  .article-page-content p { margin-bottom: 20px; }
+  .article-page-content ul, .article-page-content ol { margin: 0 0 20px 24px; }
+  .article-page-content li { margin-bottom: 10px; }
+  .callout {
+    background: linear-gradient(135deg, #e8f4f2, #d1ede9);
+    border-left: 4px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin: 32px 0;
+  }
+  .callout strong { color: var(--teal); display: block; margin-bottom: 6px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .key-takeaways {
+    background: var(--navy);
+    color: white;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 40px 0;
+  }
+  .key-takeaways h3 { color: var(--teal-light); margin-bottom: 16px; font-size: 1.1rem; }
+  .key-takeaways ul { list-style: none; }
+  .key-takeaways li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.95rem; color: rgba(255,255,255,0.85); padding-left: 20px; position: relative; }
+  .key-takeaways li::before { content: '✓'; position: absolute; left: 0; color: var(--teal-light); font-weight: 700; }
+  .key-takeaways li:last-child { border-bottom: none; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--teal); font-weight: 600; font-size: 0.9rem; cursor: pointer; margin-bottom: 32px; }
+  .back-link:hover { color: #156b5d; }
+
+  /* GUIDES PAGE */
+  .guides-header { background: var(--navy); color: white; padding: 60px 40px; text-align: center; }
+  .guides-header h1 { font-size: 2.4rem; margin-bottom: 12px; }
+  .guides-header p { color: rgba(255,255,255,0.65); font-size: 1.05rem; }
+  .filter-bar { background: white; border-bottom: 1px solid var(--border); padding: 20px 40px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .filter-btn {
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    background: white;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    transition: all .2s;
+  }
+  .filter-btn.active, .filter-btn:hover { background: var(--teal); color: white; border-color: var(--teal); }
+
+  /* ABOUT PAGE */
+  .about-hero { background: var(--navy); color: white; padding: 72px 40px; text-align: center; }
+  .about-hero h1 { font-size: 2.4rem; margin-bottom: 16px; }
+  .about-hero p { color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto; font-size: 1.05rem; line-height: 1.7; }
+  .about-section { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 28px; margin-top: 40px; }
+  .team-card { text-align: center; }
+  .team-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--navy)); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 14px; }
+  .team-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 4px; }
+  .team-card p { font-size: 0.82rem; color: var(--muted); }
+  .standards-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .standards-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.925rem; color: var(--text); line-height: 1.5; }
+  .check { color: var(--teal); font-weight: 700; flex-shrink: 0; font-size: 1.1rem; }
+
+  /* LEGAL PAGES */
+  .legal-page { max-width: 800px; margin: 0 auto; padding: 60px 40px; }
+  .legal-page h1 { font-size: 2rem; color: var(--navy); margin-bottom: 8px; }
+  .legal-page .updated { color: var(--muted); font-size: 0.85rem; margin-bottom: 36px; }
+  .legal-page h2 { font-size: 1.25rem; color: var(--navy); margin: 32px 0 12px; }
+  .legal-page p, .legal-page li { font-size: 0.95rem; line-height: 1.75; color: #374151; margin-bottom: 14px; }
+  .legal-page ul { margin-left: 24px; }
+
+  /* CONTACT PAGE */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1000px; margin: 0 auto; padding: 60px 40px; }
+  .contact-form input, .contact-form textarea, .contact-form select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+    outline: none;
+    transition: border-color .2s;
+    background: white;
+  }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--teal); }
+  .contact-form textarea { height: 140px; resize: vertical; }
+  .contact-form label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .contact-info h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: 20px; }
+  .contact-info-item { display: flex; gap: 14px; margin-bottom: 24px; align-items: flex-start; }
+  .ci-icon { font-size: 1.4rem; }
+  .ci-label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 4px; }
+  .ci-value { font-size: 0.95rem; color: var(--text); }
+
+  /* INLINE OPTIN */
+  .inline-optin {
+    background: linear-gradient(135deg, var(--teal), #0f6b5c);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 40px 0;
+    color: white;
+    text-align: center;
+  }
+  .inline-optin h3 { font-size: 1.3rem; margin-bottom: 10px; }
+  .inline-optin p { color: rgba(255,255,255,0.75); margin-bottom: 20px; font-size: 0.9rem; }
+  .inline-optin-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 12px; }
+  .inline-optin-form input { flex: 1; min-width: 200px; padding: 12px 16px; border-radius: 6px; border: none; font-size: 0.95rem; font-family: 'DM Sans', sans-serif; outline: none; }
+  .inline-optin-form button { background: var(--navy); color: white; border: none; padding: 12px 22px; border-radius: 6px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .inline-optin .optin-disclaimer { font-size: 0.68rem; color: rgba(255,255,255,0.45); }
+
+  @media(max-width:768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero, .section { padding-left: 20px; padding-right: 20px; }
+    .how-inner, .calc-inner, .optin-inner { padding-left: 20px; padding-right: 20px; }
+    .calc-fields { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .standards-list { grid-template-columns: 1fr; }
+    .article-page { padding: 40px 20px; }
+    .legal-page, .about-section { padding-left: 20px; padding-right: 20px; }
+    .guides-header, .about-hero { padding-left: 20px; padding-right: 20px; }
+    .filter-bar { padding: 16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  A brand by <a href="https://adsyncmedia.com" target="_blank">ADSYNC MEDIA</a> &nbsp;·&nbsp; Independent editorial resource for homeowners
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">Home<span>Finance</span>Hub</div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('guides')">Guides</a></li>
+    <li><a onclick="showPage('about')">About</a></li>
+    <li><a onclick="showPage('contact')">Contact</a></li>
+    <li><a onclick="scrollToOptin()" class="nav-cta">Get Free Tips</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HOME PAGE ============ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Trusted by 120,000+ Homeowners</div>
+    <h1>Own Your Home <em>With Confidence</em></h1>
+    <p>We help homeowners navigate every financial decision that comes with owning a home — clearly, honestly, and without the jargon.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="showPage('guides')">Browse All Guides</button>
+      <button class="btn-outline" onclick="scrollToOptin()">Get Free SMS Tips</button>
+    </div>
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-icon">📰</span> Independent Editorial Content</div>
+    <div class="trust-item"><span class="trust-icon">🔒</span> No Data Selling</div>
+    <div class="trust-item"><span class="trust-icon">✅</span> Expert-Reviewed Guides</div>
+    <div class="trust-item"><span class="trust-icon">📱</span> Free SMS Insights</div>
+    <div class="trust-item"><span class="trust-icon">🏠</span> 14+ In-Depth Articles</div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="section">
+    <div class="section-label">Explore Topics</div>
+    <h2 class="section-title">Everything You Need as a Homeowner</h2>
+    <p class="section-sub">From buying to selling — and everything in between — we cover the financial topics that matter most to homeowners.</p>
+    <div class="categories-grid">
+      <div class="category-card" onclick="showGuidesFilter('Mortgages')">
+        <div class="cat-icon">🏦</div>
+        <div class="cat-name">Mortgages</div>
+        <div class="cat-count">5 guides</div>
+      </div>
+      <div class="category-card" onclick="showGuidesFilter('Home Equity')">
+        <div class="cat-icon">💰</div>
+        <div class="cat-name">Home Equity</div>
+        <div class="cat-count">3 guides</div>
+      </div>
+      <div class="category-card" onclick="showGuidesFilter('Insurance')">
+        <div class="cat-icon">🛡️</div>
+        <div class="cat-name">Insurance</div>
+        <div class="cat-count">2 guides</div>
+      </div>
+      <div class="category-card" onclick="showGuidesFilter('Taxes')">
+        <div class="cat-icon">📋</div>
+        <div class="cat-name">Taxes</div>
+        <div class="cat-count">2 guides</div>
+      </div>
+      <div class="category-card" onclick="showGuidesFilter('Buying & Selling')">
+        <div class="cat-icon">🔑</div>
+        <div class="cat-name">Buying & Selling</div>
+        <div class="cat-count">2 guides</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-bg">
+    <div class="how-inner">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Your Home Finance Journey, Simplified</h2>
+      <p class="section-sub">We break down home finance into clear, manageable steps so you always know where you stand.</p>
+      <div class="steps-grid">
+        <div class="step-card" onclick="showPage('guides')">
+          <div class="step-num">1</div>
+          <h3>Explore Your Topic</h3>
+          <p>Browse our library of homeowner guides covering mortgages, equity, taxes, insurance, and more. Find what's relevant to you right now.</p>
+        </div>
+        <div class="step-card" onclick="showPage('guides')">
+          <div class="step-num">2</div>
+          <h3>Understand Your Options</h3>
+          <p>We explain your full range of options — from mortgage structures to home equity products — so you know exactly what's available before you act.</p>
+        </div>
+        <div class="step-card" onclick="scrollToOptin()">
+          <div class="step-num">3</div>
+          <h3>Get Personalized Insights</h3>
+          <p>Sign up for our free SMS tips and receive timely insights on rates, equity, and homeownership strategy delivered straight to your phone.</p>
+        </div>
+        <div class="step-card" onclick="showPage('guides')">
+          <div class="step-num">4</div>
+          <h3>Make a Confident Decision</h3>
+          <p>Armed with the right knowledge, you can approach any lender, advisor, or agent knowing exactly what questions to ask and what to expect.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED ARTICLES -->
+  <div class="section">
+    <div class="section-label">Featured Guides</div>
+    <h2 class="section-title">Homeowner Guides & Articles</h2>
+    <p class="section-sub">Practical, jargon-free articles written to help you make smarter home finance decisions.</p>
+    <div class="articles-grid">
+      <div class="article-card" onclick="showArticle(0)">
+        <div class="article-thumb" style="background:linear-gradient(135deg,#e8f4f2,#c5e8e2)">🏦</div>
+        <div class="article-body">
+          <span class="article-tag">Mortgages</span>
+          <h3>Mortgage 101: Everything First-Time Buyers Need to Know</h3>
+          <p>A complete breakdown of how mortgages work, what affects your rate, and how to prepare for the application process.</p>
+          <div class="article-meta">📅 8 min read <span class="read-more">Read Guide →</span></div>
+        </div>
+      </div>
+      <div class="article-card" onclick="showArticle(1)">
+        <div class="article-thumb" style="background:linear-gradient(135deg,#fef9ec,#fdefc8)">💰</div>
+        <div class="article-body">
+          <span class="article-tag">Home Equity</span>
+          <h3>Home Equity Options: What's Available to Homeowners?</h3>
+          <p>From home equity loans to lines of credit — here's how to think through which option fits your goals.</p>
+          <div class="article-meta">📅 7 min read <span class="read-more">Read Guide →</span></div>
+        </div>
+      </div>
+      <div class="article-card" onclick="showArticle(2)">
+        <div class="article-thumb" style="background:linear-gradient(135deg,#fde8e8,#f9c5c5)">📊</div>
+        <div class="article-body">
+          <span class="article-tag">Mortgages</span>
+          <h3>How Your Credit Score Affects Your Mortgage Rate</h3>
+          <p>Even a 20-point difference in your credit score can cost — or save — you thousands. Here's what you need to know.</p>
+          <div class="article-meta">📅 6 min read <span class="read-more">Read Guide →</span></div>
+        </div>
+      </div>
+      <div class="article-card" onclick="showArticle(3)">
+        <div class="article-thumb" style="background:linear-gradient(135deg,#e8edf8,#c5d0f0)">🛡️</div>
+        <div class="article-body">
+          <span class="article-tag">Insurance</span>
+          <h3>Homeowners Insurance: What It Covers and What It Doesn't</h3>
+          <p>Most homeowners are surprised by what their policy doesn't cover. Make sure you're not one of them.</p>
+          <div class="article-meta">📅 6 min read <span class="read-more">Read Guide →</span></div>
+        </div>
+      </div>
+      <div class="article-card" onclick="showArticle(4)">
+        <div class="article-thumb" style="background:linear-gradient(135deg,#f3e8fa,#dfc5f5)">📋</div>
+        <div class="article-body">
+          <span class="article-tag">Taxes</span>
+          <h3>Property Tax Deductions: Are You Leaving Money on the Table?</h3>
+          <p>A rundown of the homeowner tax deductions most people miss — and how to make sure you claim what you're owed.</p>
+          <div class="article-meta">📅 7 min read <span class="read-more">Read Guide →</span></div>
+        </div>
+      </div>
+      <div class="article-card" onclick="showArticle(5)">
+        <div class="article-thumb" style="background:linear-gradient(135deg,#e8f4f2,#b2ddd7)">📈</div>
+        <div class="article-body">
+          <span class="article-tag">Mortgages</span>
+          <h3>How to Read the Rate Environment as a Homeowner</h3>
+          <p>Interest rates affect nearly every home finance decision. Here's how to interpret rate movements and what they mean for you.</p>
+          <div class="article-meta">📅 5 min read <span class="read-more">Read Guide →</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <button class="btn-primary" onclick="showPage('guides')">View All 14 Guides →</button>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div style="background:white;padding:72px 0;">
+    <div class="section" style="padding-top:0;padding-bottom:0">
+      <div class="section-label">Why HomeFinanceHub</div>
+      <h2 class="section-title">Built for Homeowners, Not Lenders</h2>
+      <p class="section-sub">We're an independent editorial resource. Our only goal is to help you make the most informed home finance decisions possible.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">✍️</div>
+          <div>
+            <h3>Expert-Written Content</h3>
+            <p>All guides are written and reviewed by finance professionals with deep expertise in real estate and mortgage lending.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚖️</div>
+          <div>
+            <h3>No Conflicts of Interest</h3>
+            <p>We don't take commissions or kickbacks. Our editorial team is independent of any lenders, brokers, or financial services companies.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <div>
+            <h3>Always Up to Date</h3>
+            <p>The mortgage and housing markets change constantly. We update our guides regularly to reflect current rates, rules, and programs.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <div>
+            <h3>Free SMS Insights</h3>
+            <p>Opt in to receive occasional homeownership tips by text. No spam, no selling — just useful information when it matters.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <div>
+            <h3>Practical, Actionable Advice</h3>
+            <p>We skip the fluff. Every article ends with clear takeaways you can act on — whether you're buying, holding, or selling.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <div>
+            <h3>Your Privacy Protected</h3>
+            <p>We never sell or share your personal data with third parties. What you tell us stays with us, period.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALCULATOR -->
+  <div class="calc-bg">
+    <div class="calc-inner">
+      <div class="section-label" style="color:var(--teal-light)">Tools</div>
+      <h2 class="section-title">Mortgage Savings Estimator</h2>
+      <p class="section-sub">Enter your current loan details to see how much you could save with a lower interest rate.</p>
+      <div class="calc-box">
+        <div class="calc-fields">
+          <div class="field">
+            <label>Loan Balance ($)</label>
+            <input type="number" id="calc-balance" placeholder="e.g. 350000">
+          </div>
+          <div class="field">
+            <label>Current Rate (%)</label>
+            <input type="number" id="calc-rate" step="0.1" placeholder="e.g. 6.5">
+          </div>
+          <div class="field">
+            <label>New Rate (%)</label>
+            <input type="number" id="calc-newrate" step="0.1" placeholder="e.g. 5.8">
+          </div>
+          <div class="field">
+            <label>Remaining Term</label>
+            <select id="calc-term">
+              <option value="360">30 years</option>
+              <option value="300">25 years</option>
+              <option value="240">20 years</option>
+              <option value="180">15 years</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-result" id="calc-result">
+          <div class="calc-result-num" id="calc-saving">$0</div>
+          <p>Estimated monthly savings with a lower rate</p>
+        </div>
+        <button class="btn-primary" onclick="calcSavings()" style="width:100%;margin-bottom:12px">Calculate My Savings</button>
+        <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);">For educational purposes only. Actual savings depend on loan terms and lender fees. Consult a licensed mortgage professional.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="section">
+    <div class="section-label">Real Readers</div>
+    <h2 class="section-title">What Homeowners Are Saying</h2>
+    <p class="section-sub">Thousands of homeowners use HomeFinanceHub to make more confident financial decisions.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"I had no idea what home equity options were available before I found these guides. Clear, honest, and actually useful. I finally felt ready to talk to a lender."</blockquote>
+        <div class="reviewer">James T. <span>— Homeowner since 2019</span></div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The property tax deductions guide saved me real money. I had no idea I was leaving deductions on the table for two years. This site is genuinely helpful."</blockquote>
+        <div class="reviewer">Priya K. <span>— First-time buyer</span></div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The SMS tips are perfect — I get one or two a month with practical info about rates and home equity. Not spammy at all, just genuinely useful."</blockquote>
+        <div class="reviewer">Marcus L. <span>— Subscriber since 2023</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPT-IN -->
+  <div class="optin-bg" id="optin">
+    <div class="optin-inner">
+      <h2>Get Free Homeowner Insights by Text</h2>
+      <p>Occasional insights on mortgage rates, home equity, and smart homeownership decisions — sent directly to your phone. Unsubscribe anytime.</p>
+      <div class="optin-form">
+        <input type="tel" placeholder="Enter your mobile number">
+        <button id="optin-btn-1" class="optin-btn-disabled" disabled onclick="submitOptin(this)">Send Me Tips</button>
+      </div>
+      <div class="optin-checkbox-wrap">
+        <input type="checkbox" id="optin-chk-1" onchange="toggleOptinBtn('optin-chk-1','optin-btn-1')">
+        <label for="optin-chk-1">By checking this box, I agree to receive recurring automated marketing text messages from HomeFinanceHub, a brand of Adsync Media, at the number provided. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to cancel, HELP for help. See <a href="#" onclick="showPage('privacy')">Privacy Policy</a> and <a href="#" onclick="showPage('terms')">Terms</a>.</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Home<span>Finance</span>Hub</div>
+        <div class="footer-brand-badge">A Brand by Adsync Media</div>
+        <p>An independent editorial resource helping homeowners navigate every financial decision that comes with owning a home.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Topics</h4>
+        <ul>
+          <li><a onclick="showGuidesFilter('Mortgages')">Mortgages</a></li>
+          <li><a onclick="showGuidesFilter('Home Equity')">Home Equity</a></li>
+          <li><a onclick="showGuidesFilter('Insurance')">Insurance</a></li>
+          <li><a onclick="showGuidesFilter('Taxes')">Taxes</a></li>
+          <li><a onclick="showGuidesFilter('Buying & Selling')">Buying & Selling</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a onclick="showPage('about')">About Us</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+          <li><a href="https://adsyncmedia.com" target="_blank">Adsync Media</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a onclick="showPage('privacy')">Privacy Policy</a></li>
+          <li><a onclick="showPage('terms')">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HomeFinanceHub, a brand of <a href="https://adsyncmedia.com" target="_blank">Adsync Media</a>. All rights reserved.</span>
+      <span><a onclick="showPage('privacy')">Privacy</a> · <a onclick="showPage('terms')">Terms</a> · <a onclick="showPage('contact')">Contact</a></span>
+    </div>
+  </footer>
+
+</div><!-- end home -->
+
+<!-- ============ GUIDES PAGE ============ -->
+<div id="page-guides" class="page">
+  <div class="guides-header">
+    <h1>Homeowner Guides & Articles</h1>
+    <p>14 in-depth, expert-reviewed guides covering every major home finance topic.</p>
+  </div>
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-btn active" onclick="filterGuides('All', this)">All</button>
+    <button class="filter-btn" onclick="filterGuides('Mortgages', this)">Mortgages</button>
+    <button class="filter-btn" onclick="filterGuides('Home Equity', this)">Home Equity</button>
+    <button class="filter-btn" onclick="filterGuides('Insurance', this)">Insurance</button>
+    <button class="filter-btn" onclick="filterGuides('Taxes', this)">Taxes</button>
+    <button class="filter-btn" onclick="filterGuides('Buying & Selling', this)">Buying & Selling</button>
+  </div>
+  <div class="section">
+    <div class="articles-grid" id="guides-grid"></div>
+  </div>
+  <div class="optin-bg">
+    <div class="optin-inner">
+      <h2>Stay Informed as a Homeowner</h2>
+      <p>Get occasional SMS tips on rates, home equity, and homeownership strategy — right to your phone.</p>
+      <div class="optin-form">
+        <input type="tel" placeholder="Enter your mobile number">
+        <button id="optin-btn-2" class="optin-btn-disabled" disabled onclick="submitOptin(this)">Send Me Tips</button>
+      </div>
+      <div class="optin-checkbox-wrap">
+        <input type="checkbox" id="optin-chk-2" onchange="toggleOptinBtn('optin-chk-2','optin-btn-2')">
+        <label for="optin-chk-2">By checking this box, I agree to receive recurring automated marketing text messages from HomeFinanceHub, a brand of Adsync Media. Msg &amp; data rates may apply. Reply STOP to cancel, HELP for help.</label>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Home<span>Finance</span>Hub</div>
+        <div class="footer-brand-badge">A Brand by Adsync Media</div>
+        <p>An independent editorial resource for homeowners.</p>
+      </div>
+      <div class="footer-col"><h4>Topics</h4><ul>
+        <li><a onclick="showGuidesFilter('Mortgages')">Mortgages</a></li>
+        <li><a onclick="showGuidesFilter('Home Equity')">Home Equity</a></li>
+        <li><a onclick="showGuidesFilter('Insurance')">Insurance</a></li>
+        <li><a onclick="showGuidesFilter('Taxes')">Taxes</a></li>
+        <li><a onclick="showGuidesFilter('Buying & Selling')">Buying & Selling</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a onclick="showPage('about')">About</a></li>
+        <li><a onclick="showPage('contact')">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul>
+        <li><a onclick="showPage('privacy')">Privacy Policy</a></li>
+        <li><a onclick="showPage('terms')">Terms</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HomeFinanceHub, a brand of <a href="https://adsyncmedia.com" target="_blank">Adsync Media</a>.</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ============ ARTICLE PAGE ============ -->
+<div id="page-article" class="page">
+  <div class="article-page">
+    <div class="back-link" onclick="history.back(), showPage('guides')">← Back to Guides</div>
+    <div id="article-content"></div>
+  </div>
+  <div class="optin-bg">
+    <div class="optin-inner">
+      <h2>Get More Insights Like This</h2>
+      <p>Subscribe for free SMS tips on home finance — sent a few times a month, never spam.</p>
+      <div class="optin-form">
+        <input type="tel" placeholder="Your mobile number">
+        <button id="optin-btn-3" class="optin-btn-disabled" disabled onclick="submitOptin(this)">Subscribe</button>
+      </div>
+      <div class="optin-checkbox-wrap">
+        <input type="checkbox" id="optin-chk-3" onchange="toggleOptinBtn('optin-chk-3','optin-btn-3')">
+        <label for="optin-chk-3">By checking this box, I agree to receive recurring automated marketing text messages from HomeFinanceHub, a brand of Adsync Media. Msg &amp; data rates may apply. Reply STOP to cancel.</label>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Home<span>Finance</span>Hub</div>
+        <div class="footer-brand-badge">A Brand by Adsync Media</div>
+        <p>Independent editorial resource for homeowners.</p>
+      </div>
+      <div class="footer-col"><h4>Topics</h4><ul>
+        <li><a onclick="showGuidesFilter('Mortgages')">Mortgages</a></li>
+        <li><a onclick="showGuidesFilter('Home Equity')">Home Equity</a></li>
+        <li><a onclick="showGuidesFilter('Insurance')">Insurance</a></li>
+        <li><a onclick="showGuidesFilter('Taxes')">Taxes</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul>
+        <li><a onclick="showPage('privacy')">Privacy Policy</a></li>
+        <li><a onclick="showPage('terms')">Terms</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a onclick="showPage('about')">About</a></li>
+        <li><a onclick="showPage('contact')">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 HomeFinanceHub, a brand of Adsync Media.</span></div>
+  </footer>
+</div>
+
+<!-- ============ ABOUT PAGE ============ -->
+<div id="page-about" class="page">
+  <div class="about-hero">
+    <h1>About HomeFinanceHub</h1>
+    <p>We're an independent editorial team on a mission to make home finance accessible, understandable, and actionable for every American homeowner.</p>
+  </div>
+  <div class="about-section">
+    <h2 style="font-size:1.8rem;color:var(--navy);margin-bottom:16px">Our Mission</h2>
+    <p style="font-size:1.05rem;line-height:1.8;color:#374151;margin-bottom:20px">HomeFinanceHub was created to fill a gap: most home finance content online is either written by lenders trying to sell you something, or so full of jargon it's impossible to understand. We built this site to be different.</p>
+    <p style="font-size:1.05rem;line-height:1.8;color:#374151;margin-bottom:40px">Our editorial team researches, writes, and fact-checks every guide we publish. We don't take commissions, we don't sell leads, and we don't have financial relationships with the lenders we write about. Our only goal is to help you make a better decision.</p>
+
+    <h2 style="font-size:1.5rem;color:var(--navy);margin-bottom:16px">Our Editorial Standards</h2>
+    <ul class="standards-list">
+      <li><span class="check">✓</span> All articles reviewed by licensed finance professionals</li>
+      <li><span class="check">✓</span> No undisclosed affiliate relationships</li>
+      <li><span class="check">✓</span> Sources cited for all rate data and statistics</li>
+      <li><span class="check">✓</span> Articles updated when laws or rates change</li>
+      <li><span class="check">✓</span> Balanced coverage — we present options, not recommendations</li>
+      <li><span class="check">✓</span> Corrections policy: errors fixed within 48 hours</li>
+    </ul>
+
+    <h2 style="font-size:1.5rem;color:var(--navy);margin-top:48px;margin-bottom:24px">Our Team</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">👨‍💼</div>
+        <h3>Michael Reeves</h3>
+        <p>Editor-in-Chief · 12 years in mortgage lending and financial journalism</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👩‍💻</div>
+        <h3>Jessica Lin</h3>
+        <p>Senior Writer · CPA · Specializes in real estate tax strategy</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👨‍🏫</div>
+        <h3>David Walsh</h3>
+        <p>Mortgage Analyst · Former loan officer · Rate and market coverage</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👩‍🔬</div>
+        <h3>Sara Thompson</h3>
+        <p>Research Lead · Housing market data and homeowner surveys</p>
+      </div>
+    </div>
+
+    <div style="background:#f0f7f6;border-radius:12px;padding:32px;margin-top:48px">
+      <h2 style="font-size:1.3rem;color:var(--navy);margin-bottom:12px">Our Relationship with Adsync Media</h2>
+      <p style="font-size:0.95rem;line-height:1.75;color:#374151">HomeFinanceHub is a brand owned and operated by <a href="https://adsyncmedia.com" target="_blank" style="color:var(--teal);font-weight:600">Adsync Media</a>, a digital media company that develops consumer-focused information resources. Adsync Media provides operational support, technology infrastructure, and distribution — but does not influence our editorial content or decisions. Our editorial team operates independently.</p>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Home<span>Finance</span>Hub</div>
+        <div class="footer-brand-badge">A Brand by Adsync Media</div>
+        <p>Independent editorial resource for homeowners.</p>
+      </div>
+      <div class="footer-col"><h4>Topics</h4><ul>
+        <li><a onclick="showGuidesFilter('Mortgages')">Mortgages</a></li>
+        <li><a onclick="showGuidesFilter('Home Equity')">Home Equity</a></li>
+        <li><a onclick="showGuidesFilter('Insurance')">Insurance</a></li>
+        <li><a onclick="showGuidesFilter('Taxes')">Taxes</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul>
+        <li><a onclick="showPage('privacy')">Privacy Policy</a></li>
+        <li><a onclick="showPage('terms')">Terms</a></li>
+        <li><a onclick="showPage('contact')">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('guides')">Guides</a></li>
+        <li><a href="https://adsyncmedia.com" target="_blank">Adsync Media</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 HomeFinanceHub, a brand of Adsync Media.</span></div>
+  </footer>
+</div>
+
+<!-- ============ PRIVACY PAGE ============ -->
+<div id="page-privacy" class="page">
+  <div class="legal-page">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: January 1, 2025</p>
+    <p>HomeFinanceHub ("we," "our," or "us"), a brand of Adsync Media, is committed to protecting your privacy. This Privacy Policy describes how we collect, use, and share information about you when you visit our website or sign up for SMS communications.</p>
+    <h2>Information We Collect</h2>
+    <p>We may collect the following types of information:</p>
+    <ul>
+      <li><strong>Contact information:</strong> Your phone number when you opt in to SMS messages; your name and email if you contact us.</li>
+      <li><strong>Usage data:</strong> Pages you visit, time spent on pages, browser type, and referring website (collected automatically via standard web analytics tools).</li>
+      <li><strong>Device information:</strong> IP address, device type, and operating system.</li>
+    </ul>
+    <h2>How We Use Your Information</h2>
+    <ul>
+      <li>To send SMS messages you have opted in to receive</li>
+      <li>To respond to your inquiries and support requests</li>
+      <li>To improve our website content and user experience</li>
+      <li>To analyze aggregate traffic and usage patterns</li>
+      <li>To comply with legal obligations</li>
+    </ul>
+    <h2>SMS Communications</h2>
+    <p>By providing your mobile phone number and opting in, you consent to receive recurring automated marketing text messages from HomeFinanceHub, a brand of Adsync Media, about homeownership topics, financial guidance, and related content. Message and data rates may apply. Message frequency varies.</p>
+    <p>To stop receiving SMS messages, reply <strong>STOP</strong> to any message. For help, reply <strong>HELP</strong> or contact us at support@homefinancehub.com.</p>
+    <h2>Information Sharing</h2>
+    <p>We do not sell, rent, or trade your personal information to third parties for their marketing purposes. We may share information with:</p>
+    <ul>
+      <li>Service providers who help us operate our website and send SMS messages (these providers are contractually bound to protect your data)</li>
+      <li>Adsync Media, our parent company, for operational purposes</li>
+      <li>Law enforcement or government agencies when required by law</li>
+    </ul>
+    <h2>Cookies and Tracking</h2>
+    <p>We use cookies and similar technologies to understand how visitors use our site. You can control cookie settings through your browser preferences. Disabling cookies may affect certain website features.</p>
+    <h2>Your Rights</h2>
+    <p>Depending on your location, you may have the right to access, correct, or delete personal information we hold about you. To exercise these rights, contact us at privacy@homefinancehub.com.</p>
+    <h2>Children's Privacy</h2>
+    <p>Our website is not directed at children under 13. We do not knowingly collect personal information from children under 13.</p>
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will post the updated policy on this page with a new "last updated" date.</p>
+    <h2>Contact Us</h2>
+    <p>HomeFinanceHub, a brand of Adsync Media<br>Email: privacy@homefinancehub.com</p>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="footer-brand-name">Home<span>Finance</span>Hub</div><div class="footer-brand-badge">A Brand by Adsync Media</div></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a onclick="showPage('privacy')">Privacy Policy</a></li><li><a onclick="showPage('terms')">Terms</a></li></ul></div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('guides')">Guides</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+      <div class="footer-col"></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 HomeFinanceHub, a brand of Adsync Media.</span></div>
+  </footer>
+</div>
+
+<!-- ============ TERMS PAGE ============ -->
+<div id="page-terms" class="page">
+  <div class="legal-page">
+    <h1>Terms of Service</h1>
+    <p class="updated">Last updated: January 1, 2025</p>
+    <p>These Terms of Service ("Terms") govern your use of the HomeFinanceHub website and SMS service operated by Adsync Media ("we," "our," or "us"). By using our website or SMS service, you agree to these Terms.</p>
+    <h2>Informational Purposes Only</h2>
+    <p>All content on HomeFinanceHub is provided for general educational and informational purposes only. Nothing on this website constitutes financial, legal, mortgage, tax, or investment advice. Always consult a qualified licensed professional before making financial decisions.</p>
+    <h2>SMS Terms</h2>
+    <p>By providing your mobile number and opting in, you agree to receive recurring automated marketing text messages from HomeFinanceHub, a brand of Adsync Media, at the mobile number provided. Consent is not required to purchase any goods or services.</p>
+    <ul>
+      <li>Message and data rates may apply.</li>
+      <li>Message frequency varies (typically 2–4 messages per month).</li>
+      <li>Reply <strong>STOP</strong> at any time to cancel.</li>
+      <li>Reply <strong>HELP</strong> for assistance or contact support@homefinancehub.com.</li>
+      <li>Carriers are not liable for delayed or undelivered messages.</li>
+    </ul>
+    <h2>Intellectual Property</h2>
+    <p>All content on this website — including articles, graphics, logos, and design — is owned by Adsync Media or its licensors and is protected by copyright law. You may not reproduce, distribute, or create derivative works without our express written permission.</p>
+    <h2>Disclaimer of Warranties</h2>
+    <p>HomeFinanceHub is provided "as is" without warranties of any kind. We make no representation that the content is accurate, current, or complete. Mortgage rates and financial conditions change frequently; always verify current information with a licensed professional.</p>
+    <h2>Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, Adsync Media and HomeFinanceHub shall not be liable for any indirect, incidental, or consequential damages arising from your use of this website or reliance on any content herein.</p>
+    <h2>Governing Law</h2>
+    <p>These Terms are governed by the laws of the State of California, without regard to its conflict of law provisions.</p>
+    <h2>Changes to Terms</h2>
+    <p>We reserve the right to update these Terms at any time. Continued use of the website after changes constitutes acceptance of the updated Terms.</p>
+    <h2>Contact</h2>
+    <p>HomeFinanceHub, a brand of Adsync Media<br>Email: legal@homefinancehub.com</p>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="footer-brand-name">Home<span>Finance</span>Hub</div><div class="footer-brand-badge">A Brand by Adsync Media</div></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a onclick="showPage('privacy')">Privacy Policy</a></li><li><a onclick="showPage('terms')">Terms</a></li></ul></div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('guides')">Guides</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+      <div class="footer-col"></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 HomeFinanceHub, a brand of Adsync Media.</span></div>
+  </footer>
+</div>
+
+<!-- ============ CONTACT PAGE ============ -->
+<div id="page-contact" class="page">
+  <div class="guides-header">
+    <h1>Contact Us</h1>
+    <p>Have a question, correction, or feedback? We'd love to hear from you.</p>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <h2 style="font-size:1.5rem;color:var(--navy);margin-bottom:24px">Send Us a Message</h2>
+      <div class="contact-form">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your name">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+        <label>Subject</label>
+        <select>
+          <option>General Question</option>
+          <option>Content Correction</option>
+          <option>SMS Support</option>
+          <option>Partnership Inquiry</option>
+          <option>Other</option>
+        </select>
+        <label>Message</label>
+        <textarea placeholder="How can we help?"></textarea>
+        <button class="btn-primary" style="width:100%">Send Message</button>
+      </div>
+    </div>
+    <div class="contact-info">
+      <h3>Other Ways to Reach Us</h3>
+      <div class="contact-info-item">
+        <div class="ci-icon">📧</div>
+        <div>
+          <div class="ci-label">Email</div>
+          <div class="ci-value">support@homefinancehub.com</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-icon">📱</div>
+        <div>
+          <div class="ci-label">SMS Support</div>
+          <div class="ci-value">Reply HELP to any message from us</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-icon">🏢</div>
+        <div>
+          <div class="ci-label">Parent Company</div>
+          <div class="ci-value"><a href="https://adsyncmedia.com" target="_blank" style="color:var(--teal);font-weight:600">Adsync Media</a></div>
+        </div>
+      </div>
+      <div style="background:#f0f7f6;border-radius:10px;padding:20px;margin-top:28px">
+        <p style="font-size:0.875rem;color:var(--muted);line-height:1.7"><strong style="color:var(--navy)">SMS Opt-Out:</strong> To stop receiving text messages, reply <strong>STOP</strong> to any message from HomeFinanceHub. You'll be removed from our list immediately.</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="footer-brand-name">Home<span>Finance</span>Hub</div><div class="footer-brand-badge">A Brand by Adsync Media</div></div>
+      <div class="footer-col"><h4>Topics</h4><ul>
+        <li><a onclick="showGuidesFilter('Mortgages')">Mortgages</a></li>
+        <li><a onclick="showGuidesFilter('Home Equity')">Home Equity</a></li>
+        <li><a onclick="showGuidesFilter('Taxes')">Taxes</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a onclick="showPage('privacy')">Privacy Policy</a></li><li><a onclick="showPage('terms')">Terms</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('about')">About</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 HomeFinanceHub, a brand of Adsync Media.</span></div>
+  </footer>
+</div>
+
+<script>
+// ===== ARTICLE DATA =====
+const articles = [
+  {
+    id: 0,
+    tag: 'Mortgages',
+    emoji: '🏦',
+    bg: 'linear-gradient(135deg,#e8f4f2,#c5e8e2)',
+    title: 'Mortgage 101: Everything First-Time Buyers Need to Know',
+    author: 'David Walsh',
+    date: 'March 15, 2025',
+    readTime: '8 min read',
+    summary: 'A complete breakdown of how mortgages work, what affects your rate, and how to prepare for the application process.',
+    content: `
+      <p>Buying a home is likely the largest financial transaction you'll ever make — and the mortgage you choose will shape your finances for decades. Yet most first-time buyers walk into the process with only a vague understanding of how it actually works.</p>
+      <p>This guide is designed to change that. We'll cover the basics of how mortgages are structured, what factors determine your rate, what to expect during the application process, and how to set yourself up for success.</p>
+      <h2>What Is a Mortgage, Exactly?</h2>
+      <p>A mortgage is a loan specifically used to purchase real estate. The property itself serves as collateral, which means if you stop making payments, the lender has the legal right to take ownership of the home through a process called foreclosure.</p>
+      <p>Most mortgages in the U.S. are structured as amortizing loans — meaning each monthly payment covers both interest and a portion of the principal balance. In the early years of the loan, most of your payment goes toward interest. Over time, the balance shifts and more of each payment reduces the principal.</p>
+      <div class="callout"><strong>Key Concept</strong>A 30-year fixed mortgage at 6.5% on a $400,000 home would mean a monthly payment of about $2,528 (principal + interest). Over the life of the loan, you'd pay over $510,000 in total — roughly $110,000 in interest alone.</div>
+      <h2>Fixed vs. Adjustable Rate Mortgages</h2>
+      <p>The two most common mortgage types are fixed-rate and adjustable-rate (ARM).</p>
+      <p><strong>Fixed-rate mortgages</strong> lock in your interest rate for the entire life of the loan — typically 15 or 30 years. Your principal and interest payment never changes. This predictability is why fixed-rate loans are the most popular choice among American homebuyers.</p>
+      <p><strong>Adjustable-rate mortgages (ARMs)</strong> offer a lower introductory rate for a set period (usually 5, 7, or 10 years), after which the rate adjusts annually based on a financial index. ARMs can make sense if you plan to sell or move before the fixed period ends, but they carry the risk of rising payments if rates increase.</p>
+      <h2>What Determines Your Mortgage Rate?</h2>
+      <p>Your interest rate isn't arbitrary — lenders price it based on a combination of market factors and your individual financial profile. The key variables include:</p>
+      <ul>
+        <li><strong>Credit score:</strong> The most significant personal factor. Borrowers with scores above 760 typically receive the best available rates.</li>
+        <li><strong>Down payment:</strong> A larger down payment reduces the lender's risk, often resulting in a lower rate. Putting down 20% also eliminates private mortgage insurance (PMI).</li>
+        <li><strong>Loan type and term:</strong> 15-year loans typically carry lower rates than 30-year loans. Conforming loans (within Fannie/Freddie limits) are priced differently than jumbo loans.</li>
+        <li><strong>Debt-to-income ratio (DTI):</strong> Lenders want to see that your total monthly debts don't exceed about 43–45% of your gross monthly income.</li>
+        <li><strong>Market conditions:</strong> Mortgage rates move broadly with the 10-year Treasury yield and the overall interest rate environment set by the Federal Reserve.</li>
+      </ul>
+      <h2>The Mortgage Application Process</h2>
+      <p>Most mortgage applications follow a similar sequence:</p>
+      <ol>
+        <li><strong>Pre-approval:</strong> Before house hunting, most buyers get pre-approved. The lender reviews your income, assets, credit, and debts and issues a letter stating how much they'll lend you.</li>
+        <li><strong>House hunting and offer:</strong> Once you find a home and your offer is accepted, you formally apply for the mortgage.</li>
+        <li><strong>Processing and underwriting:</strong> The lender orders an appraisal to verify the home's value, and an underwriter reviews your complete file to approve the loan.</li>
+        <li><strong>Closing:</strong> You sign the final documents, pay closing costs (typically 2–5% of the loan amount), and receive the keys.</li>
+      </ol>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>A mortgage uses the home as collateral and is repaid over time through amortizing payments</li>
+        <li>Fixed-rate loans offer payment certainty; ARMs offer lower initial rates with future variability</li>
+        <li>Your credit score, down payment, and DTI are the biggest factors in your rate</li>
+        <li>Get pre-approved before shopping so you know your real budget</li>
+        <li>Closing costs typically add 2–5% to the total upfront cost of buying</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 1,
+    tag: 'Home Equity',
+    emoji: '💰',
+    bg: 'linear-gradient(135deg,#fef9ec,#fdefc8)',
+    title: 'Home Equity Options: What\'s Available to Homeowners?',
+    author: 'Michael Reeves',
+    date: 'March 10, 2025',
+    readTime: '7 min read',
+    summary: 'From home equity loans to lines of credit — here\'s how to think through which option fits your goals.',
+    content: `
+      <p>As you pay down your mortgage and your home appreciates in value, you build equity — the difference between what your home is worth and what you owe on it. That equity is a real financial asset, and there are several ways to access it if you need to.</p>
+      <p>Understanding your options is the first step to making a decision that actually fits your situation.</p>
+      <h2>What Is Home Equity?</h2>
+      <p>Home equity is simply the market value of your home minus the outstanding balance of your mortgage. If your home is worth $500,000 and you owe $300,000, you have $200,000 in equity.</p>
+      <p>Most lenders will let you borrow against a portion of that equity — typically up to 80–85% of your home's value, minus what you owe. That means in the example above, you might be able to borrow up to $125,000–$150,000.</p>
+      <h2>Home Equity Loan</h2>
+      <p>A home equity loan (sometimes called a "second mortgage") gives you a lump sum of cash at a fixed interest rate, repaid over a fixed term (usually 5–20 years). Your monthly payment stays the same throughout the loan.</p>
+      <p>Home equity loans are best for one-time expenses with a known cost — like a specific home renovation project, a major purchase, or consolidating high-interest debt into a fixed payment.</p>
+      <div class="callout"><strong>Watch Out For</strong>A home equity loan uses your home as collateral. If you can't make the payments, you risk foreclosure — the same as with your primary mortgage. Never borrow more than you're confident you can repay.</div>
+      <h2>Home Equity Line of Credit (HELOC)</h2>
+      <p>A HELOC works more like a credit card. The lender approves you for a maximum credit limit, and you draw from it as needed over a set draw period (typically 10 years). You only pay interest on what you've actually borrowed. After the draw period ends, the balance converts to a repayment phase.</p>
+      <p>HELOCs typically carry variable interest rates that move with the prime rate, so your payment can fluctuate.</p>
+      <p>They're well-suited for ongoing or uncertain expenses — like a renovation with an unpredictable budget, or a financial safety net you want available but don't plan to use all at once.</p>
+      <h2>Cash-Out Mortgage</h2>
+      <p>With a cash-out mortgage, you replace your existing mortgage with a new, larger one and receive the difference in cash. For example, if you owe $250,000 on a $450,000 home, you might take a new mortgage for $350,000 — receiving $100,000 at closing.</p>
+      <p>This option makes the most sense when you can secure a rate that is competitive with your current mortgage, or when you want to consolidate your debt into a single payment.</p>
+      <h2>How to Choose</h2>
+      <p>The right option depends on how much you need, how you'll use it, and how comfortable you are with variable vs. fixed payments. Key questions to ask:</p>
+      <ul>
+        <li>Do I need a lump sum or ongoing access to funds?</li>
+        <li>Is my current mortgage rate one I'd want to keep?</li>
+        <li>How long do I plan to stay in this home?</li>
+        <li>Can I handle variable payments, or do I need predictability?</li>
+      </ul>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>Home equity = home value minus what you owe on your mortgage</li>
+        <li>Home equity loans provide a lump sum at a fixed rate — good for known costs</li>
+        <li>HELOCs offer flexible, revolving credit — better for ongoing or uncertain needs</li>
+        <li>Cash-out mortgages replace your current loan and give you the difference in cash</li>
+        <li>All three use your home as collateral — borrow only what you can repay</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 2,
+    tag: 'Mortgages',
+    emoji: '📊',
+    bg: 'linear-gradient(135deg,#fde8e8,#f9c5c5)',
+    title: 'How Your Credit Score Affects Your Mortgage Rate',
+    author: 'David Walsh',
+    date: 'March 5, 2025',
+    readTime: '6 min read',
+    summary: 'Even a 20-point difference in your credit score can cost — or save — you thousands. Here\'s what you need to know.',
+    content: `
+      <p>When a lender quotes you a mortgage rate, they're not pulling a number out of the air. They're pricing the risk of lending you money. And the single most powerful indicator of your creditworthiness — at least in the lender's eyes — is your credit score.</p>
+      <h2>Why Credit Scores Matter So Much in Mortgages</h2>
+      <p>Most mortgage rates are based on Fannie Mae and Freddie Mac pricing grids that assign specific rate adjustments based on credit score tiers and loan-to-value ratios. A borrower with a 760 score and a 20% down payment will receive a very different rate than someone with a 680 score and 5% down — even applying for the same loan.</p>
+      <div class="callout"><strong>Real Numbers</strong>On a $350,000 30-year fixed mortgage, the difference between a 6.0% rate (excellent credit) and a 7.0% rate (fair credit) amounts to about $210 more per month — and over $75,000 more in total interest over the life of the loan.</div>
+      <h2>The Credit Score Tiers Lenders Use</h2>
+      <ul>
+        <li><strong>760+:</strong> Best available rates, minimal adjustments</li>
+        <li><strong>720–759:</strong> Still strong; minor pricing adjustments</li>
+        <li><strong>680–719:</strong> Moderate adjustments; rate will be noticeably higher</li>
+        <li><strong>640–679:</strong> Significant rate premium; some loan types unavailable</li>
+        <li><strong>Below 640:</strong> Limited options; FHA loans may still be available but at higher rates</li>
+      </ul>
+      <h2>What Goes Into Your Credit Score</h2>
+      <p>The most widely used scoring model for mortgages is the FICO score, which weighs five factors:</p>
+      <ul>
+        <li><strong>Payment history (35%):</strong> Have you paid your bills on time?</li>
+        <li><strong>Amounts owed (30%):</strong> How much of your available credit are you using?</li>
+        <li><strong>Length of credit history (15%):</strong> How long have your accounts been open?</li>
+        <li><strong>Credit mix (10%):</strong> Do you have a mix of credit types (cards, loans, etc.)?</li>
+        <li><strong>New credit (10%):</strong> Have you recently opened new accounts or applied for credit?</li>
+      </ul>
+      <h2>How to Improve Your Score Before Applying</h2>
+      <p>If your score isn't where you'd like it to be, the best moves to make are:</p>
+      <ol>
+        <li><strong>Pay down revolving balances.</strong> Getting your credit utilization below 30% (and ideally below 10%) has the fastest positive impact on your score.</li>
+        <li><strong>Don't open new accounts.</strong> Each new application triggers a hard inquiry and reduces your average account age — both negatives before a mortgage application.</li>
+        <li><strong>Fix errors on your credit report.</strong> Check all three bureaus (Experian, Equifax, TransUnion) at annualcreditreport.com and dispute any inaccuracies.</li>
+        <li><strong>Don't close old accounts.</strong> Closing a card reduces your available credit and shortens your average account history.</li>
+      </ol>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>Mortgage rates are heavily influenced by credit score tiers</li>
+        <li>A 760+ score typically qualifies you for the best available rates</li>
+        <li>A 60–80 point difference in score can cost $75,000+ over a 30-year loan</li>
+        <li>Pay down revolving debt for the fastest score improvement</li>
+        <li>Avoid new credit applications in the 6 months before applying for a mortgage</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 3,
+    tag: 'Insurance',
+    emoji: '🛡️',
+    bg: 'linear-gradient(135deg,#e8edf8,#c5d0f0)',
+    title: 'Homeowners Insurance: What It Covers and What It Doesn\'t',
+    author: 'Jessica Lin',
+    date: 'Feb 28, 2025',
+    readTime: '6 min read',
+    summary: 'Most homeowners are surprised by what their policy doesn\'t cover. Make sure you\'re not one of them.',
+    content: `
+      <p>Homeowners insurance is required by virtually all mortgage lenders — and for good reason. A single fire, theft, or liability lawsuit could cost you hundreds of thousands of dollars. Your policy is the financial safety net that stands between you and that risk.</p>
+      <p>But most people don't fully understand what their policy actually covers until they file a claim — and find out their loss isn't covered. Here's what you need to know.</p>
+      <h2>What Standard Homeowners Insurance Covers</h2>
+      <p>A standard HO-3 policy (the most common type) typically covers:</p>
+      <ul>
+        <li><strong>Dwelling coverage:</strong> Damage to the structure of your home from covered perils — fire, wind, hail, lightning, vandalism, and more.</li>
+        <li><strong>Other structures:</strong> Fences, detached garages, sheds — typically covered at 10% of your dwelling coverage amount.</li>
+        <li><strong>Personal property:</strong> Your belongings (furniture, electronics, clothing) if damaged or stolen, up to policy limits.</li>
+        <li><strong>Liability protection:</strong> If someone is injured on your property and sues you, liability coverage pays legal fees and settlements up to your policy limit.</li>
+        <li><strong>Additional living expenses (ALE):</strong> If your home is uninhabitable due to a covered loss, ALE covers hotel and other living costs while repairs are made.</li>
+      </ul>
+      <h2>What's NOT Covered (Common Surprises)</h2>
+      <p>This is where most homeowners get caught off guard:</p>
+      <ul>
+        <li><strong>Floods:</strong> Standard homeowners insurance does not cover flood damage. Period. You need a separate flood insurance policy — either through the National Flood Insurance Program (NFIP) or a private insurer.</li>
+        <li><strong>Earthquakes:</strong> Also not covered by standard policies. Separate earthquake insurance is available and worth considering in high-risk areas.</li>
+        <li><strong>Routine maintenance and wear:</strong> Your policy covers sudden, unexpected damage — not gradual deterioration. A leaking roof that wasn't repaired promptly won't be covered.</li>
+        <li><strong>Mold, rot, and pest damage:</strong> Typically excluded unless directly caused by a covered peril.</li>
+        <li><strong>Sewer and drain backups:</strong> Usually not covered without an endorsement (add-on coverage).</li>
+        <li><strong>High-value items:</strong> Standard policies have sublimits for jewelry, art, collectibles, and electronics. You may need separate scheduled personal property coverage.</li>
+      </ul>
+      <div class="callout"><strong>Important</strong>If you live in a flood zone, your mortgage lender likely requires you to carry flood insurance separately. But even if you're not in a designated flood zone, flooding from heavy rain can happen anywhere — and only about 27% of flood claims come from high-risk areas.</div>
+      <h2>How Much Coverage Do You Need?</h2>
+      <p>Your dwelling coverage should be sufficient to rebuild your home from the ground up — not just its current market value. Construction costs have risen significantly in recent years, and many homeowners are underinsured as a result.</p>
+      <p>Review your policy annually and consider an inflation guard endorsement that automatically adjusts your coverage limit with construction cost inflation.</p>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>Standard policies cover fire, wind, theft, liability, and additional living expenses</li>
+        <li>Floods and earthquakes require separate policies — don't assume they're included</li>
+        <li>Gradual damage and maintenance issues are not covered</li>
+        <li>High-value items (jewelry, art) may need scheduled personal property coverage</li>
+        <li>Set coverage at rebuild cost, not market value — and review it annually</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 4,
+    tag: 'Taxes',
+    emoji: '📋',
+    bg: 'linear-gradient(135deg,#f3e8fa,#dfc5f5)',
+    title: 'Property Tax Deductions: Are You Leaving Money on the Table?',
+    author: 'Jessica Lin',
+    date: 'Feb 20, 2025',
+    readTime: '7 min read',
+    summary: 'A rundown of the homeowner tax deductions most people miss — and how to make sure you claim what you\'re owed.',
+    content: `
+      <p>Owning a home comes with significant tax advantages — but surveys consistently show that many homeowners fail to claim all the deductions they're entitled to. In some cases, that means leaving thousands of dollars on the table every year.</p>
+      <p>Here's a practical rundown of the key deductions available to homeowners.</p>
+      <h2>Mortgage Interest Deduction</h2>
+      <p>If you itemize your deductions, you can deduct the interest you pay on a mortgage of up to $750,000 used to buy, build, or substantially improve your primary or secondary residence. This is typically the largest tax deduction available to homeowners.</p>
+      <p>In the first years of a mortgage, a large share of each payment is interest — which means the deduction can be substantial, particularly on larger loans.</p>
+      <div class="callout"><strong>Note</strong>You can only claim the mortgage interest deduction if your total itemized deductions exceed the standard deduction ($14,600 for single filers, $29,200 for married filing jointly in 2024). Many homeowners with smaller mortgages get more benefit from the standard deduction.</div>
+      <h2>Property Tax Deduction</h2>
+      <p>You can deduct state and local property taxes (as part of the SALT deduction), but the total SALT deduction is currently capped at $10,000 per year ($5,000 if married filing separately). Homeowners in high-tax states like New York, New Jersey, and California are most affected by this cap.</p>
+      <h2>Home Office Deduction</h2>
+      <p>If you're self-employed and regularly use a dedicated part of your home exclusively for business, you may be able to deduct a portion of your home expenses — including mortgage interest, property taxes, utilities, and insurance — proportional to the office's square footage.</p>
+      <p>Note: Employees who work from home generally cannot claim this deduction under current law.</p>
+      <h2>Energy Efficiency Credits</h2>
+      <p>The Inflation Reduction Act expanded tax credits for energy-efficient home improvements through 2032. Qualifying improvements include:</p>
+      <ul>
+        <li>Energy-efficient windows, doors, and skylights (credit up to 30% of cost)</li>
+        <li>Heat pumps and heat pump water heaters</li>
+        <li>Insulation and air sealing</li>
+        <li>Home energy audits (up to $150 credit)</li>
+        <li>Solar panels and battery storage systems (30% tax credit)</li>
+      </ul>
+      <h2>Capital Gains Exclusion When You Sell</h2>
+      <p>This is the big one: when you sell your primary residence, you can exclude up to $250,000 of capital gains from taxes ($500,000 for married couples) — as long as you've lived in the home for at least two of the past five years. This is one of the most generous tax breaks available to individuals.</p>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>Mortgage interest is deductible on loans up to $750,000 if you itemize</li>
+        <li>Property taxes are deductible as part of SALT, capped at $10,000</li>
+        <li>Self-employed homeowners may qualify for the home office deduction</li>
+        <li>Energy efficiency upgrades qualify for significant federal tax credits through 2032</li>
+        <li>Capital gains up to $250K ($500K married) are excluded when you sell your primary home</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 5,
+    tag: 'Mortgages',
+    emoji: '📈',
+    bg: 'linear-gradient(135deg,#e8f4f2,#b2ddd7)',
+    title: 'How to Read the Rate Environment as a Homeowner',
+    author: 'David Walsh',
+    date: 'Feb 14, 2025',
+    readTime: '5 min read',
+    summary: 'Interest rates affect nearly every home finance decision. Here\'s how to interpret rate movements and what they mean for you.',
+    content: `
+      <p>Interest rates don't just matter when you're buying a home — they affect your home equity decisions, the timing of any mortgage changes, and the overall cost of homeownership. Yet most people find rate news confusing, especially when the news seems to contradict itself ("The Fed cut rates, but mortgage rates went up?").</p>
+      <p>Here's how to make sense of it.</p>
+      <h2>The Fed Funds Rate vs. Mortgage Rates</h2>
+      <p>This is the most common source of confusion. The Federal Reserve sets the federal funds rate — the rate banks charge each other for overnight lending. This directly affects short-term borrowing costs (credit cards, HELOCs, car loans).</p>
+      <p>But 30-year fixed mortgage rates are tied primarily to the <strong>10-year Treasury yield</strong>, not the Fed funds rate. The 10-year Treasury reflects long-term economic expectations — especially inflation expectations — rather than short-term rate decisions.</p>
+      <p>That's why mortgage rates sometimes go up even after the Fed cuts rates. If investors believe the economy will remain strong or inflation will stay elevated, the 10-year yield can rise regardless of what the Fed does in the short term.</p>
+      <div class="callout"><strong>Rule of Thumb</strong>Mortgage rates typically run about 1.5–2.5 percentage points above the 10-year Treasury yield. When the 10-year Treasury is at 4.3%, expect 30-year mortgage rates in the 5.8–6.8% range.</div>
+      <h2>What Rate Changes Mean for Different Decisions</h2>
+      <p><strong>Thinking about a home equity loan or HELOC?</strong> HELOCs carry variable rates tied to the prime rate (which moves with the Fed funds rate). When the Fed raises rates, HELOC rates rise quickly. When the Fed cuts, they fall — but often with a delay.</p>
+      <p><strong>Evaluating whether to change your mortgage structure?</strong> The key calculation is the break-even point: how many months will it take for the monthly savings to offset the closing costs? If you plan to stay in the home long enough to break even, the math may work in your favor.</p>
+      <p><strong>Thinking about buying or selling?</strong> Higher rates reduce affordability, which can cool demand and soften prices. Lower rates stimulate buying activity — which can increase competition and push prices higher. Neither is uniformly "good" or "bad"; it depends on whether you're buying or selling.</p>
+      <h2>Signals Worth Watching</h2>
+      <ul>
+        <li><strong>10-year Treasury yield:</strong> The best leading indicator of where mortgage rates are heading</li>
+        <li><strong>CPI (Consumer Price Index):</strong> High inflation keeps rates elevated; declining inflation tends to allow rates to fall</li>
+        <li><strong>Fed statements and "dot plot":</strong> The Fed's quarterly projections of future rate levels give clues about their intentions</li>
+        <li><strong>Mortgage Bankers Association weekly survey:</strong> A current snapshot of where rates actually are for borrowers</li>
+      </ul>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>Mortgage rates follow the 10-year Treasury yield, not the Fed funds rate</li>
+        <li>HELOCs are tied to prime rate and respond quickly to Fed moves</li>
+        <li>Rate changes affect affordability — both for buyers and sellers</li>
+        <li>Watch the 10-year Treasury and CPI as leading indicators for mortgage rates</li>
+        <li>Timing the market is hard; making a decision based on your personal financial situation is more reliable</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 6,
+    tag: 'Mortgages',
+    emoji: '⚖️',
+    bg: 'linear-gradient(135deg,#e8f4f2,#c5e8e2)',
+    title: 'Fixed vs. Adjustable Rate: A Practical Comparison',
+    author: 'David Walsh',
+    date: 'Feb 7, 2025',
+    readTime: '6 min read',
+    summary: 'Not sure whether to lock in a fixed rate or go with an ARM? Here\'s how to think through the decision.',
+    content: `
+      <p>The choice between a fixed-rate mortgage and an adjustable-rate mortgage (ARM) is one of the most consequential decisions a homebuyer makes — yet many people make it without fully understanding the trade-offs.</p>
+      <h2>How Fixed-Rate Mortgages Work</h2>
+      <p>With a fixed-rate mortgage, your interest rate and monthly principal-and-interest payment are locked in for the entire life of the loan. If you take out a 30-year fixed at 6.75%, you'll pay that rate for all 360 payments — regardless of what happens to interest rates in the broader market.</p>
+      <p>Fixed rates tend to be slightly higher than initial ARM rates because the lender is absorbing the risk that rates may rise over time. You're essentially paying a premium for certainty.</p>
+      <h2>How Adjustable-Rate Mortgages Work</h2>
+      <p>An ARM has an initial fixed period — commonly 5, 7, or 10 years — during which your rate doesn't change. After that, the rate adjusts annually based on a benchmark index (usually the Secured Overnight Financing Rate, or SOFR) plus a margin set by the lender.</p>
+      <p>ARMs typically come with caps that limit how much the rate can move in any single adjustment and over the life of the loan. Common cap structures include 2/1/5 (2% initial cap, 1% per adjustment, 5% lifetime cap) or 5/2/5.</p>
+      <div class="callout"><strong>Example</strong>A 7/1 ARM at 6.0% with a 5/2/5 cap structure: For the first 7 years, your rate is 6.0%. After that, it can increase by up to 5% at the first adjustment (to 11%), then by 2% each year, but no more than 5% total over the life of the loan. That's a meaningful worst-case scenario to plan for.</div>
+      <h2>When Fixed Makes Sense</h2>
+      <ul>
+        <li>You plan to stay in the home long-term (10+ years)</li>
+        <li>You value payment predictability and budget stability</li>
+        <li>Current rates are historically reasonable, not at elevated peaks</li>
+        <li>You have limited financial cushion to absorb potential payment increases</li>
+      </ul>
+      <h2>When an ARM Might Make Sense</h2>
+      <ul>
+        <li>You have a clear plan to sell or move before the fixed period ends</li>
+        <li>Current fixed rates are unusually high and you expect rates to fall</li>
+        <li>The rate savings during the fixed period are substantial and you have the financial flexibility to handle future adjustments</li>
+      </ul>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>Fixed rates provide certainty; ARMs offer lower initial rates with future variability</li>
+        <li>ARMs have caps — understand them before committing</li>
+        <li>Fixed is generally the safer choice for long-term homeowners</li>
+        <li>ARMs can make sense for buyers with a short planned horizon</li>
+        <li>Never choose an ARM assuming you'll sell or move before it adjusts — plans change</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 7,
+    tag: 'Mortgages',
+    emoji: '📄',
+    bg: 'linear-gradient(135deg,#fef9ec,#fdefc8)',
+    title: 'What Documents Do You Need for a Mortgage Application?',
+    author: 'Michael Reeves',
+    date: 'Jan 30, 2025',
+    readTime: '5 min read',
+    summary: 'Get organized before you apply. Here\'s exactly what lenders will ask for.',
+    content: `
+      <p>One of the most common reasons mortgage applications get delayed — or even denied — is disorganized or missing documentation. Lenders require substantial proof of your income, assets, employment, and identity before approving a loan. Getting ahead of this paperwork can speed up your closing and reduce stress considerably.</p>
+      <h2>Income Documentation</h2>
+      <p>Lenders need to verify that your income is real, consistent, and sufficient to support the mortgage payment.</p>
+      <ul>
+        <li><strong>W-2 employees:</strong> Last two years of W-2s, last two years of tax returns (all pages and schedules), and your most recent 30 days of pay stubs</li>
+        <li><strong>Self-employed borrowers:</strong> Last two years of personal and business tax returns, a year-to-date profit and loss statement, and possibly business bank statements</li>
+        <li><strong>Other income sources:</strong> Documentation for rental income, Social Security, pension, disability, or alimony — typically a two-year history and evidence of continuance</li>
+      </ul>
+      <h2>Asset Documentation</h2>
+      <p>Lenders verify that you have enough cash for the down payment, closing costs, and reserves.</p>
+      <ul>
+        <li>Last two to three months of bank statements (all pages, all accounts)</li>
+        <li>Retirement account statements (401k, IRA)</li>
+        <li>Investment account statements</li>
+        <li>Gift letter (if any of your down payment is a gift from a family member)</li>
+      </ul>
+      <div class="callout"><strong>Important</strong>Large deposits in your bank statements will need to be explained and sourced. If you've recently received a large sum — a bonus, an inheritance, money from selling an asset — have documentation ready to explain it.</div>
+      <h2>Employment Verification</h2>
+      <ul>
+        <li>Contact information for your employer(s) — lenders will typically call to verify employment</li>
+        <li>If recently started a new job, an offer letter showing compensation and start date</li>
+        <li>If self-employed, a CPA letter or business license confirming business existence</li>
+      </ul>
+      <h2>Identity and Property Documents</h2>
+      <ul>
+        <li>Government-issued ID (driver's license or passport)</li>
+        <li>Social Security number (for credit pull authorization)</li>
+        <li>Signed purchase agreement for the property</li>
+        <li>Homeowners insurance binder (required before closing)</li>
+        <li>Title commitment from a title company</li>
+      </ul>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>Gather two years of tax returns, W-2s, and 30 days of pay stubs early</li>
+        <li>Collect 2–3 months of bank statements across all accounts</li>
+        <li>Large deposits in your bank account will need documentation</li>
+        <li>Self-employed borrowers face more paperwork — plan for it</li>
+        <li>Have your insurance binder and purchase agreement ready before closing</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 8,
+    tag: 'Home Equity',
+    emoji: '🏧',
+    bg: 'linear-gradient(135deg,#e8f4f2,#c5e8e2)',
+    title: 'HELOC 101: How a Home Equity Line of Credit Works',
+    author: 'Michael Reeves',
+    date: 'Jan 22, 2025',
+    readTime: '6 min read',
+    summary: 'A HELOC can be a powerful financial tool — or a risk if you don\'t fully understand how it works.',
+    content: `
+      <p>A home equity line of credit (HELOC) is one of the most flexible financial products available to homeowners — and one of the most misunderstood. Used wisely, it provides low-cost access to capital for home improvements, financial emergencies, and more. Used carelessly, it can put your home at risk.</p>
+      <h2>The Basics: How a HELOC Works</h2>
+      <p>A HELOC is a revolving line of credit secured by your home equity. The lender approves you for a maximum credit limit, and you can borrow from it, repay it, and borrow again — similar to a credit card, but with much lower interest rates.</p>
+      <p>Most HELOCs have two phases:</p>
+      <ul>
+        <li><strong>Draw period (typically 10 years):</strong> You can borrow up to your limit as needed. Minimum payments are usually interest-only during this phase, though you can pay down principal too.</li>
+        <li><strong>Repayment period (typically 10–20 years):</strong> The line closes and your balance converts to a fully amortizing loan. Payments increase significantly because you're now paying both principal and interest.</li>
+      </ul>
+      <h2>Variable Interest Rates</h2>
+      <p>Most HELOCs carry variable interest rates tied to the prime rate (which moves with the federal funds rate). This means your rate — and minimum payment — can fluctuate significantly over time.</p>
+      <p>When the Fed raises rates, your HELOC rate goes up. When rates fall, your rate goes down. In high-rate environments, a HELOC can become meaningfully more expensive than expected.</p>
+      <div class="callout"><strong>Planning Tip</strong>When evaluating a HELOC, calculate what your payment would look like if the rate increased by 2–3 percentage points. If you couldn't comfortably handle that payment, either borrow less or consider a fixed-rate home equity loan instead.</div>
+      <h2>How Much Can You Borrow?</h2>
+      <p>Most lenders allow you to borrow up to 80–85% of your home's appraised value, minus your existing mortgage balance. This is called your combined loan-to-value (CLTV) ratio.</p>
+      <p>Example: Home worth $450,000, mortgage balance $280,000. 85% of $450K = $382,500. Subtract $280K = $102,500 potential HELOC limit.</p>
+      <h2>Good Uses vs. Risky Uses</h2>
+      <p><strong>Generally sound uses:</strong> Home renovations that add value, emergency fund backup, funding education expenses</p>
+      <p><strong>Higher-risk uses:</strong> Funding vacations, everyday expenses, or investments that could decline in value — especially if it means you can't comfortably make payments</p>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>A HELOC is a revolving credit line secured by your home equity</li>
+        <li>Draw period (interest-only) is followed by repayment (principal + interest)</li>
+        <li>Variable rates mean payments can rise with interest rates</li>
+        <li>Borrow up to 80–85% of home value minus your mortgage balance</li>
+        <li>Best used for home improvements or true financial needs — not lifestyle expenses</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 9,
+    tag: 'Home Equity',
+    emoji: '📉',
+    bg: 'linear-gradient(135deg,#fef9ec,#fdefc8)',
+    title: '7 Ways to Build Home Equity Faster',
+    author: 'Sara Thompson',
+    date: 'Jan 15, 2025',
+    readTime: '5 min read',
+    summary: 'Building equity isn\'t just about waiting — there are concrete steps you can take to accelerate it.',
+    content: `
+      <p>Home equity is one of the most powerful wealth-building tools available to American families. The faster you build it, the more financial flexibility you have — whether you want to access it, sell your home, or simply improve your net worth.</p>
+      <p>Here are seven proven strategies to accelerate equity growth.</p>
+      <h2>1. Make Extra Payments on Your Mortgage Principal</h2>
+      <p>Every extra dollar you pay toward your mortgage reduces your principal balance — which means less interest accrues over time and your equity grows faster. Even one extra payment per year on a 30-year mortgage can shave years off your loan and save tens of thousands in interest.</p>
+      <h2>2. Switch to Biweekly Payments</h2>
+      <p>Instead of making 12 monthly payments per year, paying half your monthly amount every two weeks results in 26 half-payments — equivalent to 13 full payments per year. That extra payment goes directly to principal and can cut years off your mortgage.</p>
+      <h2>3. Make Targeted Home Improvements</h2>
+      <p>Not all renovations are equal from an equity standpoint. Kitchen and bathroom upgrades, adding square footage, improving curb appeal, and finishing a basement typically return 60–80% of their cost in added home value. Minor kitchen remodels often have the best ROI.</p>
+      <div class="callout"><strong>Data Point</strong>According to the Remodeling Cost vs. Value report, a minor kitchen remodel returns about 86% of costs in added home value — making it one of the highest-ROI improvements available to homeowners.</div>
+      <h2>4. Choose a 15-Year Mortgage</h2>
+      <p>15-year mortgages build equity much faster than 30-year loans because more of each payment goes to principal. Yes, the monthly payment is higher — but the total interest paid over the life of the loan is dramatically lower, and your equity grows roughly twice as fast.</p>
+      <h2>5. Don't Tap Your Equity Unnecessarily</h2>
+      <p>Every dollar you borrow against your home reduces your equity. Avoid cash-out transactions or HELOCs for non-essential purposes if your goal is to maximize equity growth.</p>
+      <h2>6. Let the Market Work (Patiently)</h2>
+      <p>National home values have historically appreciated at about 3–4% per year, though with significant regional variation. Long-term homeownership in appreciating markets is a reliable — if slow — path to building equity passively.</p>
+      <h2>7. Avoid PMI as Quickly as Possible</h2>
+      <p>If you put down less than 20%, you're paying private mortgage insurance (PMI) that adds to your monthly costs without building any equity. Once your equity reaches 20%, request PMI cancellation from your lender. At 22% equity, servicers are legally required to cancel it automatically.</p>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>Extra mortgage payments directly accelerate equity growth</li>
+        <li>Biweekly payments equal one extra monthly payment per year</li>
+        <li>Targeted home improvements can meaningfully increase appraised value</li>
+        <li>15-year mortgages build equity far faster than 30-year loans</li>
+        <li>Cancel PMI as soon as your equity reaches 20%</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 10,
+    tag: 'Insurance',
+    emoji: '💡',
+    bg: 'linear-gradient(135deg,#f3e8fa,#dfc5f5)',
+    title: '5 Ways to Lower Your Homeowners Insurance Premium',
+    author: 'Jessica Lin',
+    date: 'Jan 8, 2025',
+    readTime: '5 min read',
+    summary: 'You may be paying more than you need to for homeowners insurance. Here\'s how to reduce your premium without reducing your protection.',
+    content: `
+      <p>Homeowners insurance premiums have risen significantly in recent years, driven by rising construction costs, extreme weather events, and changes in the reinsurance market. But you're not powerless. There are legitimate steps you can take to reduce what you pay — without sacrificing the coverage you actually need.</p>
+      <h2>1. Raise Your Deductible</h2>
+      <p>Your deductible is the amount you pay out-of-pocket before your insurance kicks in. Raising it from $1,000 to $2,500 or $5,000 can reduce your annual premium by 10–30%. The key is to make sure you'd actually have the cash available to cover that deductible if you needed to file a claim.</p>
+      <h2>2. Bundle Your Home and Auto Insurance</h2>
+      <p>Most major insurers offer discounts of 5–25% when you bundle your homeowners and auto insurance with the same company. It's worth getting a combined quote when your policies come up for renewal — the savings can be substantial.</p>
+      <div class="callout"><strong>Tip</strong>Even if bundling doesn't always produce the absolute cheapest total, the convenience of a single insurer and single deductible in the event of a major loss (like a car damaged in a covered storm) has real value.</div>
+      <h2>3. Install Safety and Security Features</h2>
+      <p>Insurers reward risk reduction. Common discounts are available for:</p>
+      <ul>
+        <li>Monitored burglar and fire alarm systems</li>
+        <li>Smoke detectors and CO detectors on every floor</li>
+        <li>Deadbolt locks on exterior doors</li>
+        <li>Sprinkler systems</li>
+        <li>Storm shutters or impact-resistant windows (in hurricane-prone areas)</li>
+      </ul>
+      <h2>4. Shop and Compare Every 2–3 Years</h2>
+      <p>Loyalty doesn't always pay in insurance. Rates vary significantly between carriers, and the insurer with the best rate three years ago may no longer be competitive. Get quotes from at least three carriers at renewal time — ideally through an independent agent who can compare across multiple companies.</p>
+      <h2>5. Review Your Coverage and Remove What You Don't Need</h2>
+      <p>If your home has appreciated significantly, make sure you're not paying for blanket add-ons that aren't relevant to your situation. Review each endorsement with your agent. On the other hand, make sure you're not underinsured — the goal is right-sized coverage, not minimum coverage.</p>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>Raising your deductible can cut premiums by 10–30% — if you have the cash to cover it</li>
+        <li>Bundling home and auto insurance typically saves 5–25%</li>
+        <li>Safety and security features earn meaningful discounts</li>
+        <li>Shopping every few years is the simplest way to avoid overpaying</li>
+        <li>Review endorsements annually — remove what's irrelevant, keep what matters</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 11,
+    tag: 'Taxes',
+    emoji: '🏷️',
+    bg: 'linear-gradient(135deg,#e8edf8,#c5d0f0)',
+    title: 'Capital Gains Tax When You Sell Your Home: What to Know',
+    author: 'Jessica Lin',
+    date: 'Jan 2, 2025',
+    readTime: '6 min read',
+    summary: 'Selling your home could trigger a significant tax bill — or none at all. Here\'s what determines which scenario applies to you.',
+    content: `
+      <p>If you've owned your home for a while and it's appreciated significantly, selling it could generate a large capital gain. Whether that gain is taxable depends on how long you've lived there and how much profit you've made.</p>
+      <h2>The Primary Residence Exclusion</h2>
+      <p>This is the most important rule for most homeowners. If your home has been your primary residence for at least two of the past five years, you can exclude up to:</p>
+      <ul>
+        <li><strong>$250,000</strong> of capital gain if you're a single filer</li>
+        <li><strong>$500,000</strong> of capital gain if you're married filing jointly</li>
+      </ul>
+      <p>This exclusion is available once every two years. For most homeowners, this means their home sale is entirely tax-free.</p>
+      <div class="callout"><strong>Example</strong>You bought your home for $300,000 and sold it for $700,000, generating a $400,000 gain. If you're married and file jointly, the entire gain is excluded. If you're single, $250,000 is excluded and you'd owe capital gains tax on the remaining $150,000.</div>
+      <h2>How Capital Gains Tax Is Calculated</h2>
+      <p>If your gain exceeds the exclusion, the taxable portion is subject to capital gains tax rates:</p>
+      <ul>
+        <li><strong>0%</strong> for lower-income taxpayers (taxable income under ~$47,000 single / ~$94,000 married in 2024)</li>
+        <li><strong>15%</strong> for most taxpayers</li>
+        <li><strong>20%</strong> for high earners (taxable income above ~$518,000 single)</li>
+      </ul>
+      <p>Additionally, higher-income taxpayers may owe the 3.8% Net Investment Income Tax (NIIT) on top of capital gains tax.</p>
+      <h2>What Counts as Your "Cost Basis"</h2>
+      <p>Your taxable gain is calculated as the sale price minus your adjusted cost basis. Your basis includes:</p>
+      <ul>
+        <li>The original purchase price</li>
+        <li>Closing costs from when you bought (title, legal fees, recording fees)</li>
+        <li>The cost of capital improvements you made during ownership (kitchen renovation, addition, new roof)</li>
+        <li>Selling costs (agent commissions, title fees, transfer taxes)</li>
+      </ul>
+      <p>Keeping good records of home improvements is critical — they can significantly reduce your taxable gain.</p>
+      <h2>Partial Exclusions</h2>
+      <p>If you sell before the two-year residency requirement is met due to a qualifying circumstance — a job relocation, health issue, or other unforeseen event — you may qualify for a partial exclusion proportional to the time you lived there.</p>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>Up to $250K ($500K married) of home sale gains are tax-free if you've lived there 2+ years</li>
+        <li>Gains above the exclusion are taxed at capital gains rates (0%, 15%, or 20%)</li>
+        <li>Track all capital improvements — they increase your basis and reduce taxable gain</li>
+        <li>Closing costs on both purchase and sale reduce your taxable gain</li>
+        <li>Partial exclusions may apply if you sell early due to qualifying life events</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 12,
+    tag: 'Buying & Selling',
+    emoji: '🔑',
+    bg: 'linear-gradient(135deg,#e8f4f2,#b2ddd7)',
+    title: 'The Complete Home Buying Guide for 2025',
+    author: 'Sara Thompson',
+    date: 'Dec 20, 2024',
+    readTime: '10 min read',
+    summary: 'Everything you need to know about buying a home in today\'s market — from saving for a down payment to closing day.',
+    content: `
+      <p>Buying a home is one of the most important financial decisions you'll ever make. In today's market — with elevated rates and limited inventory in many areas — it requires even more preparation than it did a few years ago. This guide walks you through every stage of the process.</p>
+      <h2>Step 1: Get Your Finances in Order</h2>
+      <p>Before you start looking at homes, spend 3–6 months preparing your financial profile:</p>
+      <ul>
+        <li>Check all three credit reports and dispute any errors</li>
+        <li>Pay down revolving debt to get credit utilization below 30%</li>
+        <li>Avoid opening new credit accounts</li>
+        <li>Build up your savings — you'll need funds for down payment, closing costs, and reserves</li>
+        <li>Document your income and gather two years of tax returns</li>
+      </ul>
+      <h2>Step 2: Determine How Much Home You Can Afford</h2>
+      <p>Most lenders use a 28/36 rule: your housing costs (mortgage, taxes, insurance) shouldn't exceed 28% of your gross monthly income, and your total debts shouldn't exceed 36%. In practice, lenders will often go higher, but those are reasonable budgeting guidelines.</p>
+      <p>Don't forget to factor in costs beyond the mortgage: property taxes (typically 1–2% of home value per year), homeowners insurance, HOA fees if applicable, and ongoing maintenance (budget 1% of home value annually).</p>
+      <div class="callout"><strong>Common Mistake</strong>Getting pre-approved for the maximum amount doesn't mean you should borrow the maximum. A lender's approval is based on ability to repay — not on what makes you comfortable month to month. Many buyers are "house poor" because they borrowed their maximum.</div>
+      <h2>Step 3: Get Pre-Approved</h2>
+      <p>In today's competitive markets, a pre-approval letter is essentially required to make an offer. Pre-approval involves the lender reviewing your income, assets, and credit and committing — subject to an appraisal and final underwriting — to a specific loan amount and rate.</p>
+      <p>Apply with 2–3 lenders and compare not just rates but also lender fees, points, and service quality. Multiple credit pulls for mortgage applications within a 45-day window count as a single inquiry for scoring purposes.</p>
+      <h2>Step 4: Find a Real Estate Agent and Start Shopping</h2>
+      <p>A good buyer's agent is invaluable — they have market knowledge, negotiating experience, and access to listings. Their commission is typically paid by the seller (though this is changing with new NAR settlement rules in 2024).</p>
+      <p>When evaluating homes, look beyond aesthetics. Consider: location and school district quality, neighborhood trends, condition of major systems (roof, HVAC, electrical, plumbing), and potential for future value appreciation.</p>
+      <h2>Step 5: Make an Offer and Negotiate</h2>
+      <p>Your agent will help you determine an appropriate offer price based on comparable sales. In competitive markets, you may need to offer above asking price, waive contingencies, or offer a larger earnest money deposit to stand out.</p>
+      <p>Key contingencies to consider: financing (protects you if your loan falls through), inspection (gives you the right to back out or renegotiate after a home inspection), and appraisal (protects you if the home appraises below the purchase price).</p>
+      <h2>Step 6: Inspection and Appraisal</h2>
+      <p>Hire an independent home inspector — don't use one recommended by the seller's agent. A thorough inspection will identify structural issues, roof condition, HVAC age and condition, plumbing and electrical concerns, and potential safety issues. Use inspection findings to renegotiate repairs or price adjustments.</p>
+      <p>The lender will order an appraisal to verify the home is worth what you're paying. If it appraises low, you can renegotiate the price, make up the difference in cash, or walk away (if you have an appraisal contingency).</p>
+      <h2>Step 7: Close</h2>
+      <p>Closing day involves signing a large stack of documents, paying closing costs (2–5% of the loan amount), and receiving the keys. Review your Closing Disclosure carefully before closing day — it itemizes all fees and should closely match your Loan Estimate.</p>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>Prepare your finances 3–6 months before you start seriously looking</li>
+        <li>Get pre-approved with 2–3 lenders and compare total costs — not just rate</li>
+        <li>Budget for taxes, insurance, maintenance, and HOA beyond the mortgage payment</li>
+        <li>Don't waive inspection or appraisal contingencies lightly</li>
+        <li>Review your Closing Disclosure against your Loan Estimate before closing</li>
+      </ul></div>
+    `
+  },
+  {
+    id: 13,
+    tag: 'Buying & Selling',
+    emoji: '🏡',
+    bg: 'linear-gradient(135deg,#fde8e8,#f9c5c5)',
+    title: 'How to Sell Your Home for the Most Money',
+    author: 'Sara Thompson',
+    date: 'Dec 12, 2024',
+    readTime: '8 min read',
+    summary: 'Strategic preparation, smart pricing, and the right agent can mean tens of thousands of dollars more at closing.',
+    content: `
+      <p>Selling a home isn't passive. The decisions you make about preparation, pricing, and marketing can be the difference between a fast sale at full price and a listing that languishes on the market and eventually sells for less than it should.</p>
+      <p>Here's how to approach it strategically.</p>
+      <h2>Start With a Realistic Market Assessment</h2>
+      <p>Before you do anything else, understand what your home is actually worth in the current market. A comparative market analysis (CMA) from a local real estate agent will show you recent sales of similar homes in your neighborhood. Look at:</p>
+      <ul>
+        <li>Comparable homes sold in the past 90 days</li>
+        <li>Current active listings (your competition)</li>
+        <li>Expired listings (homes that didn't sell — often due to overpricing)</li>
+        <li>Average days on market in your area</li>
+      </ul>
+      <h2>Make the Right Improvements — Not All Improvements</h2>
+      <p>Not every improvement adds more value than it costs. Focus on repairs that buyers will notice and that appraisers will credit:</p>
+      <ul>
+        <li><strong>High ROI:</strong> Fresh neutral paint throughout, landscaping and curb appeal, updated kitchen hardware, refinished hardwood floors, deep cleaning</li>
+        <li><strong>Often overlooked:</strong> Fixing deferred maintenance (leaking faucets, sticky doors, cracked tile) — these signal to buyers that the home hasn't been cared for</li>
+        <li><strong>Lower ROI:</strong> Major renovations (full kitchen remodel, adding a pool) — these rarely recoup their full cost at sale</li>
+      </ul>
+      <div class="callout"><strong>Staging Statistics</strong>According to the National Association of Realtors, staged homes sell for 1–5% more than comparable unstaged homes and spend 33–50% less time on the market. At minimum, declutter aggressively and depersonalize the space.</div>
+      <h2>Price Strategically</h2>
+      <p>Overpricing is the most common mistake sellers make — and one of the most costly. Homes that sit on the market accumulate "days on market" data that signals to buyers (and their agents) that something may be wrong, even if the home is fine and simply overpriced.</p>
+      <p>Price at or slightly below market value for maximum activity and competing offers. In strong markets, this can actually result in a higher final sale price than aggressive overpricing.</p>
+      <h2>Choose the Right Agent and Marketing Strategy</h2>
+      <p>Interview at least three agents. Ask specifically: How will you market this property? What's your average sale-to-list ratio? How many listings did you close in this price range last year?</p>
+      <p>A strong marketing plan should include professional photography (non-negotiable), video or virtual tour, MLS listing, targeted social media promotion, and open houses if appropriate for your market.</p>
+      <h2>Understand Your Net Proceeds</h2>
+      <p>Work with your agent to calculate your estimated net proceeds before you list. Account for: agent commissions (2.5–3% per agent, though this is changing), title and escrow fees, transfer taxes, any seller concessions, and the outstanding mortgage payoff amount.</p>
+      <div class="key-takeaways"><h3>Key Takeaways</h3><ul>
+        <li>Price based on a current CMA — overpricing is the most costly mistake</li>
+        <li>Focus improvements on high-ROI cosmetic updates and deferred maintenance</li>
+        <li>Staged homes sell faster and for more money — at minimum, declutter and depersonalize</li>
+        <li>Professional photography is essential in today's market</li>
+        <li>Calculate your net proceeds before listing so there are no surprises at closing</li>
+      </ul></div>
+    `
+  }
+];
+
+// ===== ROUTER =====
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + page);
+  if (el) {
+    el.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+  if (page === 'guides') renderGuides('All');
+}
+
+function showArticle(id) {
+  const a = articles[id];
+  if (!a) return;
+  const container = document.getElementById('article-content');
+  container.innerHTML = `
+    <span class="article-page-tag">${a.tag}</span>
+    <h1>${a.title}</h1>
+    <div class="article-page-meta">
+      <span>✍️ ${a.author}</span>
+      <span>📅 ${a.date}</span>
+      <span>⏱ ${a.readTime}</span>
+    </div>
+    <div class="article-page-content">${a.content}</div>
+    <div class="inline-optin">
+      <h3>Get More Homeowner Insights</h3>
+      <p>Join 120,000+ homeowners who get our free SMS tips on rates, equity, and home finance strategy.</p>
+      <div class="inline-optin-form">
+        <input type="tel" placeholder="Your mobile number">
+        <button id="optin-btn-4" class="optin-btn-disabled" disabled onclick="submitOptin(this)">Subscribe Free</button>
+      </div>
+      <div class="optin-checkbox-wrap">
+        <input type="checkbox" id="optin-chk-4" onchange="toggleOptinBtn('optin-chk-4','optin-btn-4')">
+        <label for="optin-chk-4">By checking this box, I agree to receive recurring automated marketing texts from HomeFinanceHub, a brand of Adsync Media. Msg &amp; data rates may apply. Reply STOP to cancel.</label>
+      </div>
+    </div>
+  `;
+  showPage('article');
+}
+
+function showGuidesFilter(category) {
+  showPage('guides');
+  setTimeout(() => filterGuides(category, null), 50);
+}
+
+function renderGuides(filter) {
+  const grid = document.getElementById('guides-grid');
+  if (!grid) return;
+  const filtered = filter === 'All' ? articles : articles.filter(a => a.tag === filter);
+  grid.innerHTML = filtered.map(a => `
+    <div class="article-card" onclick="showArticle(${a.id})">
+      <div class="article-thumb" style="background:${a.bg}">${a.emoji}</div>
+      <div class="article-body">
+        <span class="article-tag">${a.tag}</span>
+        <h3>${a.title}</h3>
+        <p>${a.summary}</p>
+        <div class="article-meta">📅 ${a.readTime} <span class="read-more">Read Guide →</span></div>
+      </div>
+    </div>
+  `).join('');
+
+  // Update filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.textContent === filter || (filter === 'All' && btn.textContent === 'All')) {
+      btn.classList.add('active');
+    }
+  });
+}
+
+function filterGuides(category, btn) {
+  renderGuides(category);
+  if (btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+}
+
+// ===== CALCULATOR =====
+function calcSavings() {
+  const balance = parseFloat(document.getElementById('calc-balance').value);
+  const rate = parseFloat(document.getElementById('calc-rate').value) / 100 / 12;
+  const newRate = parseFloat(document.getElementById('calc-newrate').value) / 100 / 12;
+  const term = parseInt(document.getElementById('calc-term').value);
+  if (!balance || !rate || !newRate || rate <= 0 || newRate <= 0) {
+    alert('Please fill in all fields to calculate your savings.');
+    return;
+  }
+  const pmt = (r, n, pv) => pv * r * Math.pow(1+r,n) / (Math.pow(1+r,n) - 1);
+  const current = pmt(rate, term, balance);
+  const newPmt = pmt(newRate, term, balance);
+  const saving = current - newPmt;
+  const resultEl = document.getElementById('calc-result');
+  document.getElementById('calc-saving').textContent = saving > 0
+    ? '$' + Math.round(saving).toLocaleString()
+    : '$0';
+  resultEl.style.display = 'block';
+}
+
+function scrollToOptin() {
+  const el = document.getElementById('optin');
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+  else showPage('home');
+}
+
+
+// ===== OPTIN CHECKBOX =====
+function toggleOptinBtn(chkId, btnId) {
+  const chk = document.getElementById(chkId);
+  const btn = document.getElementById(btnId);
+  if (!chk || !btn) return;
+  if (chk.checked) {
+    btn.disabled = false;
+    btn.classList.remove('optin-btn-disabled');
+  } else {
+    btn.disabled = true;
+    btn.classList.add('optin-btn-disabled');
+  }
+}
+
+function submitOptin(btn) {
+  const form = btn.closest('.optin-inner') || btn.closest('.inline-optin');
+  if (!form) return;
+  const phone = form.querySelector('input[type="tel"]');
+  if (!phone || !phone.value.trim()) {
+    phone.focus();
+    return;
+  }
+  btn.textContent = '✓ You're subscribed!';
+  btn.disabled = true;
+  btn.classList.remove('optin-btn-disabled');
+  btn.style.background = '#0f2744';
+  if (phone) phone.disabled = true;
+  const chk = form.querySelector('input[type="checkbox"]');
+  if (chk) chk.disabled = true;
+}
+
+// Initialize
+renderGuides('All');
+</script>
+</body>
+</html>
